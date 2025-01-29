@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Feminina</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Link para o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+.contact form label {
+    display: block;
+    margin-top: 15px; /* Espaçamento entre os labels e os inputs */
+    font-size: 16px; /* Tamanho da fonte */
+    color: #333; /* Cor do texto */
+}
+
+.contact form input {
+    width: 100%; /* Faz o input ocupar toda a largura do contêiner */
+    padding: 10px; /* Espaçamento interno dentro do input */
+    margin-top: 5px; /* Espaçamento entre o label e o input */
+    margin-bottom: 15px; /* Espaçamento entre inputs consecutivos */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 5px; /* Arredondamento */
+    font-size: 14px; /* Tamanho da fonte dentro do input */
+}
+    </style>
+</head>
+<header>
+    <nav class="navbar">
+      <div class="logo">Ser Mulher</div>  
+      <ul id="navbar-links">
+        <li><a href="index.html">Sobre Nós</a></li>
+        <li><a href="equipe.html">Equipe</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="agendamentos.html" class="cta-button">Agendar Consulta</a></li>
+      </ul>
+    </nav>
+</header>
+
+<script>
+    // Função para alternar o menu em dispositivos móveis
+    function toggleMenu() {
+      const navbarLinks = document.getElementById('navbar-links');
+      navbarLinks.classList.toggle('show');
+    }
+
+    // Função para adicionar a classe 'transparent' à navbar quando o usuário rolar a página
+    window.onscroll = function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.pageYOffset > 50) { // A partir de 50px de rolagem
+        navbar.classList.add('transparent'); // Adiciona a classe para torná-la transparente
+      } else {
+        navbar.classList.remove('transparent'); // Remove a classe quando voltar ao topo
+      }
+    };
+</script>
+
+    <section id="contact">
+        <div class="container">
+            <!-- Formulário de Cadastro -->
+            <div class="contact contact-left">
+                <h2>Entre em sua conta</h2>
+                <form id="contactForm" action="#" method="post" onsubmit="return validateForm()">
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirmPassword">Confirmar Senha:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Função para validar os campos do formulário
+        function validateForm() {
+            // Obter os valores dos campos
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Verificar se algum campo está vazio
+            if (email === "" || password === "" || confirmPassword === "") {
+                alert("Todos os campos são obrigatórios!");
+                return false; // Impede o envio do formulário
+            }
+
+            // Verificar se o e-mail tem formato válido
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Por favor, insira um e-mail válido.");
+                return false; // Impede o envio do formulário
+            }
+
+            // Verificar se as senhas coincidem
+            if (password !== confirmPassword) {
+                alert("As senhas não coincidem!");
+                return false; // Impede o envio do formulário
+            }
+
+            // Verificar a complexidade da senha
+            if (password.length < 6) {
+                alert("A senha deve ter pelo menos 6 caracteres.");
+                return false; // Impede o envio do formulário
+            }
+
+            // Se tudo estiver correto, permite o envio do formulário
+            alert("Formulário enviado com sucesso!");
+            return true;
+        }
+    </script>
+
+<footer class="footer">
+  <div class="container">
+      <div class="footer-content">
+          <div class="footer-left">
+              <p>&copy; 2025 Clínica Feminina. Todos os direitos reservados.</p>
+          </div>
+          <div class="footer-right">
+              <ul class="social-links">
+                  <li><a href="https://www.facebook.com/?locale=pt_BR" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                  <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                  <li><a href="https://www.linkedin.com/home" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>
